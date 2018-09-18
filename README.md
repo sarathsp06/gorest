@@ -12,7 +12,7 @@
 0. Clone the repo
   ```
   go get -d github.com/sarathsp06/gorest
-  cd $GOAPTH/src/gorest
+  cd $GOAPTH/src/github.com/sarathsp06/gorest
   make compile
   make setup #this might need sudo  
   make run
@@ -30,9 +30,10 @@
 **NOTE**: 
 * Run `make` to see all the possible make commands
 * Run `su -c "setenforce 0"` , if logs  directory is empty
+* If page,pageNum invalid the service would assume default (20,1)
+
 
 ## Available Resources
-#### Recipes
 
 | Name   | Method      | URL                    | Protected |
 | ---    | ---         | ---                    | ---       |
@@ -41,14 +42,12 @@
 | Create | `POST`      | `/orders`              | ✓         |
 | Update | `PUT/PATCH` | `/orders/{id}`         | ✓         |
 
-Additionally, recipes can be rated many times from 1-5 and a rating is never overwritten.  
-
 ### TODO
 * [X] (API Doc)[https://documenter.getpostman.com/view/2799423/RWaLvT6K]
 * [X] Pagination
 * [X] Dockerize
 * [ ] Mongo db optimization ,adding indexes etc
-
+* [ ] **Re**-enable the basic auth
 
 ## References
 * https://github.com/roblaszczak/go-cleanarch/tree/master/examples/valid-simple

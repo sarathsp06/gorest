@@ -2,7 +2,6 @@ package mongo_test
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"time"
 
@@ -54,7 +53,7 @@ func ExampleDB_Insert() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Details: %+v", result.Age)
+	log.Printf("Details: %+v", result.Age)
 
 	// OUTPUT:
 	// Details: 111
@@ -78,7 +77,7 @@ func ExampleDB_Get() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Details: %+v", result[0].Age)
+	log.Printf("Details: %+v", result[0].Age)
 
 	// OUTPUT:
 	// Details: 10
@@ -100,7 +99,7 @@ func ExampleDB_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Details: %+v", result.Name)
+	log.Printf("Details: %+v", result.Name)
 
 	// OUTPUT:
 	// Details: Sarath
@@ -126,10 +125,10 @@ func ExampleDB_Delete() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Details: %+v\n", result.Phone)
+	log.Printf("Details: %+v\n", result.Phone)
 	err = db.Delete("person", "111111", &result)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 
 	// OUTPUT:

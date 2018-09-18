@@ -26,6 +26,7 @@ func main() {
 	if err := configmanager.InitConfig(ServiceDirectory); err != nil {
 		log.Fatalln("Failed initializing configmanager. Error = ", err)
 	}
+	ConfigureLog()
 
 	e := echo.New()
 	e.Use(middleware.Recover())

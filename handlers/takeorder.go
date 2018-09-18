@@ -26,7 +26,7 @@ func UpdateOrder(ctx echo.Context) error {
 	}
 
 	if !req.Status.IsValid() {
-		return ctx.JSON(ErrBadRequestInvalidParameter("status invalid")
+		return ctx.JSON(ErrBadRequestInvalidParameter("status invalid"))
 	}
 
 	ID := ctx.Param("id")

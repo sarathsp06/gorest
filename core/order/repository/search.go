@@ -15,5 +15,17 @@ func (rm OrderRepository) List(
 	[]order.Order,
 	error,
 ) {
-	return nil, nil
+	orders, err := search(Order{}, pageSize, pageNum)
+	if err != nil {
+		return nil, err
+	}
+	result := make([]order.Order, len(orders))
+	for idx, ord := range orders {
+		result[idx] = order.Order{
+			ID:       ord.ID,
+			Status:   ord.Status,
+			Distance: ord.Distance,
+		}
+	}
+	return result, nil
 }

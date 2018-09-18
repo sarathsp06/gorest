@@ -11,7 +11,7 @@ type Location struct {
 	Longitude float64
 }
 
-//String implements fmt.Stringer
+//String implements log.Stringer
 func (l Location) String() string {
 	return fmt.Sprintf("%f,%f", l.Latitude, l.Longitude)
 }

@@ -8,7 +8,7 @@ import (
 // Error represents a HTTP error
 type Error struct {
 	HTTPCode int    `json:"-"`
-	Error    string `json:"-"`
+	Error    string `json:"error"`
 }
 
 func newError(HTTPCode int, msg string) func(...string) (int, *Error) {

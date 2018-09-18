@@ -13,4 +13,5 @@ func AddRoutes(e *echo.Echo) {
 	e.POST("/order", handlers.CreateOrder)
 	e.PUT("/order/:id", handlers.UpdateOrder)
 	e.PATCH("/order/:id", handlers.UpdateOrder)
+	e.GET("/order", handlers.ListOrders)
 }
