@@ -1,0 +1,16 @@
+version: '2'
+services:
+    gorest:
+        build: .
+        restart: unless-stopped
+        ports:
+            - "8080:8080"
+        links:
+            - mongo
+        volumes:
+            - ./logs:/var/log/gorest:rw         
+    mongo:
+        image: mvertes/alpine-mongo
+        restart: unless-stopped
+        ports:
+            - "27017:27017"

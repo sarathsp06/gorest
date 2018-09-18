@@ -1,0 +1,13 @@
+{
+  "process_name" : "gorest",
+  "host": "0.0.0.0",
+  "port": 8080,
+  "mongo": {
+    "host" : "localhost",
+    "port": 27017,
+    "connection_timeout" : 3
+  },
+  "google" : {
+    "key"  : "AIzaSyD9iObJCBZaiFN_NosQAj-iVhcubBx_j-w"
+  }
+}
