@@ -6,7 +6,7 @@ FROM golang
 ADD . /go/src/github.com/sarathsp06/gorest
 
 # Get dependencies
-RUN go get github.com/sarathsp06/gorest
+RUN go get -v  github.com/sarathsp06/gorest
 
 WORKDIR /go/src/github.com/sarathsp06/gorest
 RUN make compile

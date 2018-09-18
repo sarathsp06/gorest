@@ -1,1 +1,1 @@
-bash docker-compse up -d gorest
+bash docker-compose up -d gorest
