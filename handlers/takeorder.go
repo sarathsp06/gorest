@@ -6,6 +6,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/sarathsp06/gorest/core/order"
+	"github.com/sarathsp06/gorest/utils/metrics"
 )
 
 // UpdateOrderRequest stores a request to update an order
@@ -15,6 +16,7 @@ type UpdateOrderRequest struct {
 
 // UpdateOrder handles take order http requets
 func UpdateOrder(ctx echo.Context) error {
+	metrics.CaptureDelay("UpdateOrder")()
 	var req UpdateOrderRequest
 	if err := ctx.Bind(&req); err != nil {
 		log.Println("Error binding request", err)

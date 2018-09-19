@@ -1,4 +1,6 @@
-# Recipe REST Servive [documentation](https://documenter.getpostman.com/view/2799423/RWaLvT6K)
+# GoREST REST Servive [documentation](https://documenter.getpostman.com/view/2799423/RWaLvT6K)
+
+A Simple REST application using golang,docker,mongo  
 
 ### Technology
 
@@ -28,14 +30,14 @@
 * Run `make` to see all the possible make commands
 * Run `su -c "setenforce 0"` , if logs  directory is empty
 * If page,pageNum invalid the service would assume default (20,1)
-
+* I have added google key in config file the account is not paid, change the config in `config.json.prod` with a valid key to run properly
 
 ## Available Resources
 
 | Name   | Method      | URL                    | Protected |
 | ---    | ---         | ---                    | ---       |
 | About  | `GET`       | `/`                    | ✘         |
-| List   | `GET`       | `/order`              | ✘         |
+| List   | `GET`       | `/orders`              | ✘         |
 | Create | `POST`      | `/order`              | ✓         |
 | Update | `PUT/PATCH` | `/order/{id}`         | ✓         |
 
@@ -43,6 +45,7 @@
 * [X] (API Doc)[https://documenter.getpostman.com/view/2799423/RWaLvT6K]
 * [X] Pagination
 * [X] Dockerize
+* [X] Add delay metrics
 * [ ] Mongo db optimization ,adding indexes etc
 * [ ] **Re**-enable the basic auth
 

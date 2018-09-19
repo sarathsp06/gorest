@@ -19,8 +19,8 @@ func HandleDelay(handlers ...func(delay time.Duration)) func() {
 // Usage
 //	function TestFunction() {}
 //		defer CaptureDelay("request-id","TestFunction")()
-//		do-something-foralomgtime....
+//		do-something-for along time....
 //	}
-func CaptureDelay(requestID string, funcName string) func() {
-	return HandleDelay(func(delay time.Duration) { Delay(requestID, funcName, delay) })
+func CaptureDelay(funcName string) func() {
+	return HandleDelay(func(delay time.Duration) { Delay(funcName, delay) })
 }

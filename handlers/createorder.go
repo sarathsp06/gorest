@@ -6,6 +6,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/sarathsp06/gorest/core/order"
+	"github.com/sarathsp06/gorest/utils/metrics"
 	"github.com/sarathsp06/gorest/utils/routes"
 )
 
@@ -30,6 +31,7 @@ func (cro CreateOrderRequest) Validate() (int, *Error) {
 
 // CreateOrder handles create order http requets
 func CreateOrder(ctx echo.Context) error {
+	metrics.CaptureDelay("CreateOrderHandler")()
 	var req CreateOrderRequest
 	if err := ctx.Bind(&req); err != nil {
 		log.Println("Error binding request", err)

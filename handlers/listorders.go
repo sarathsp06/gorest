@@ -7,6 +7,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/sarathsp06/gorest/core/order"
+	"github.com/sarathsp06/gorest/utils/metrics"
 )
 
 const (
@@ -36,6 +37,7 @@ func getPageInfo(ctx echo.Context) (int, int) {
 
 // ListOrders lists all the orders
 func ListOrders(ctx echo.Context) error {
+	metrics.CaptureDelay("ListOrders")()
 	page, limit := getPageInfo(ctx)
 	orders, err := order.List(ctx.Request().Context(), page, limit)
 	if err != nil {

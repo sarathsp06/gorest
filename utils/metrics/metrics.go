@@ -1,13 +1,14 @@
 package metrics
 
 import (
-	"log"
+	"fmt"
 	"time"
 )
 
 // TODO: Replace the log.Println with proper metrics lib functions
+// Add request id
 
 // Delay sends metrics about delay on multiple
-func Delay(reqID string, funcName string, delay time.Duration) {
-	log.Println("METRIC", reqID, funcName, delay)
+func Delay(funcName string, delay time.Duration) {
+	fmt.Println("METRIC", funcName, delay)
 }
