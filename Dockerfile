@@ -13,6 +13,6 @@ RUN make compile
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 RUN apk add --no-cache libc6-compat
+WORKDIR /
 COPY --from=builder /usr/src/build .
-COPY --from=builder /usr/src/config.json.prod config.json
 CMD ["./gorest"]

@@ -9,6 +9,7 @@ services:
             - mongo
         volumes:
             - ./logs:/var/log/gorest:rw         
+            - ./config.json.prod:/config.json
     mongo:
         image: mvertes/alpine-mongo
         restart: unless-stopped
