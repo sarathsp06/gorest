@@ -1,6 +1,8 @@
 override BINARY=gorest
 VERSION=V1.0.0
 API_ENV?=prod
+GO=GO15VENDOREXPERIMENT=1 go
+
 
 clean: ## Clean up all the resources
 	rm -rf build
@@ -10,7 +12,7 @@ compile: ## Compile the project to generate the binary in the build folder
 ifndef VERSION
 	$(error VERSION environment variable has to be set)
 endif
-	GO15VENDOREXPERIMENT=1 go build -ldflags "-w -s -X main.Version=${VERSION} -X main.MinVersion=`git rev-parse HEAD` -X main.BuildTime=`date +%FT%T%z`" -o build/${BINARY}
+	 ${GO} build  -ldflags "--extldflags -static -w -s -X main.Version=${VERSION} -X main.MinVersion=`git rev-parse HEAD` -X main.BuildTime=`date +%FT%T%z`" -o build/${BINARY}
 
 run: ## run the application
 	./build/${BINARY}
@@ -28,7 +30,7 @@ logdir: ## creates log directory for  logs
 
 
 help: ## You can always run this command to see whau options are available to you while running the make command
-	@grep -P '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: help compile config clean logdir run
 .DEFAULT_GOAL := help

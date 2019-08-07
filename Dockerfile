@@ -1,19 +1,18 @@
-# Start from a Debian image with the latest version of Go installed
-# and a workspace (GOPATH) configured at /go.
-FROM golang
+FROM golang:1.12 AS builder
 
-# Copy the local package files to the container's workspace.
-ADD . /go/src/github.com/sarathsp06/gorest
-
-# Get dependencies
-RUN go get github.com/sarathsp06/gorest
-
-WORKDIR /go/src/github.com/sarathsp06/gorest
+WORKDIR /usr/src
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
+COPY . .
 RUN make compile
-RUN make setup
 
-# Run the service
-ENTRYPOINT ["make","run"]
 
-# Document that the service listens on port 8080.
-EXPOSE 8080
+
+
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+RUN apk add --no-cache libc6-compat
+COPY --from=builder /usr/src/build .
+COPY --from=builder /usr/src/config.json.prod config.json
+CMD ["./gorest"]

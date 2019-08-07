@@ -1,8 +1,8 @@
 package middlewares
 
 import (
-	"github.com/sarathsp06/gorest/utils"
 	"github.com/labstack/echo"
+	"github.com/sarathsp06/gorest/utils"
 )
 
 // KeyRequestID key in echo context
